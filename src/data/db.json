@@ -1,5 +1,18 @@
 {
-    "employee": [
-        
-    ]
+  "employee": [
+    {
+      "id": "33",
+      "name": "rad",
+      "doj": "2025-09-22T15:02:32.947Z",
+      "role": "operator",
+      "salary": "3000"
+    },
+    {
+      "id": "045",
+      "name": "Test45",
+      "doj": "2021-06-15T22:00:00.000Z",
+      "role": "manager",
+      "salary": "45000"
+    }
+  ]
 }
