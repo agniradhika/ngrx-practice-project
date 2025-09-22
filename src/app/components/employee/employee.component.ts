@@ -7,13 +7,14 @@ import { Employee } from '../../model/Employee';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { EmployeeService } from '../../services/employee.service';
 import { Subscription } from 'rxjs';
+import { CurrencyPipe, DatePipe } from '@angular/common'
 
 
 
 @Component({
   selector: 'app-employee',
   imports: [MatCardModule, MatButtonModule, MatDialogModule,
-    MatTableModule
+    MatTableModule, CurrencyPipe, DatePipe
   ],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.scss'
@@ -30,7 +31,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-      
+      this.getAllEmployees();
   }
 
   getAllEmployees() {
@@ -40,13 +41,23 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     })
     this.subscription.add(sub);
   }
+
   addEmployee() {
     this.dialog.open(AddEmployeeComponent, {
       width: '50%',
       exitAnimationDuration: '1000ms',
       enterAnimationDuration: '1000ms'
+    }).afterClosed().subscribe(o=>{
+      this.getAllEmployees();
     });
 
+  }
+
+  deleteEmployee(empId: number) {
+  
+  }
+
+  editEmployee(empId: number) {
   }
 
   ngOnDestroy(): void {
